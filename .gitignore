@@ -1,0 +1,56 @@
+# =========================
+# Python / Environments
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.env
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =========================
+# Data (Ignore all large datasets, but keep the folder structure)
+# =========================
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+*.csv
+*.parquet
+*.json
+*.jsonl
+!data/processed/h3_void_scores.csv
+
+# =========================
+# PySpark / Hadoop
+# =========================
+spark-warehouse/
+metastore_db/
+derby.log
+*.crc
+_SUCCESS
+logs/
+
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+
+# =========================
+# IDEs / OS files
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
