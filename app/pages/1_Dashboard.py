@@ -125,6 +125,9 @@ display_df = top5_df[[
     "competitor_count", "rent_index", "total_reviews", "avg_rating"
 ]].reset_index(drop=True)
 
+# 讓 Index 從 1 開始 (1~5 名)
+display_df.index = display_df.index + 1
+
 # 格式化
 st.dataframe(
     display_df,
