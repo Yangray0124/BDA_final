@@ -6,47 +6,47 @@ inject_global_style()
 inject_sidebar_footer()
 
 st.title("🔬 Methodology & Trust")
-st.markdown("了解 Spatial BI 如何透過資料科學與獨家演算法，為您找出下一個黃金店面。")
+st.markdown("Discover how Spatial BI uses data science and proprietary algorithms to find your next golden location.")
 
 st.divider()
 
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    st.subheader("什麼是 Void Score？")
+    st.subheader("What is the Void Score?")
     st.markdown("""
-    **Void Score** 是我們專利的市場評估指標 (0-100分)，分數越高，代表該區域的投資潛力越大。
-    它綜合考量了三個關鍵維度：
+    The **Void Score** is our proprietary market evaluation metric (0-100). The higher the score, the greater the investment potential of the area.
+    It comprehensively considers three key dimensions:
 
-    1. **供給空白度 (Supply Void) - 40% 權重**
-       - **資料來源：** Yelp 開放資料集。
-       - **邏輯：** 我們計算該區域內同類型餐廳的競爭者數量。競爭者越少，市場的供給空白越大，新進入者的成功機率越高。
+    1. **Supply Void - 40% Weight**
+       - **Data Source:** Yelp Open Dataset.
+       - **Logic:** We calculate the number of competitors of the same cuisine type in the area. The fewer competitors, the larger the supply void, leading to a higher probability of success for new entrants.
     
-    2. **成本效益 (Cost Efficiency) - 30% 權重**
-       - **資料來源：** Zillow 區域租金指數 (ZORI)。
-       - **邏輯：** 租金是雲端廚房或實體店面最大的固定成本。我們優先推薦租金處於合理或低點的區域，以降低您的營運門檻與風險。
+    2. **Cost Efficiency - 30% Weight**
+       - **Data Source:** Zillow Observed Rent Index (ZORI).
+       - **Logic:** Rent is the largest fixed cost for a cloud kitchen or physical storefront. We prioritize areas with reasonable or low rent to lower your operational threshold and risk.
     
-    3. **需求強度 (Demand Strength) - 30% 權重**
-       - **資料來源：** Yelp 顧客評論數據。
-       - **邏輯：** 我們使用該區域的總評論數作為活躍消費需求的代理指標。沒有需求的「死城」即便租金再低也不值得投資。
+    3. **Demand Strength - 30% Weight**
+       - **Data Source:** Yelp Customer Review Data.
+       - **Logic:** We use the total number of reviews in the area as a proxy metric for active consumer demand. A "ghost town" without demand is not worth investing in, regardless of how low the rent is.
     """)
     
-    st.subheader("為什麼使用 Uber H3 空間索引？")
+    st.subheader("Why use Uber H3 Spatial Indexing?")
     st.markdown("""
-    傳統的商業分析往往依賴 **Zip Code (郵遞區號)**，但郵遞區號的形狀極不規則，且邊界劃分往往基於行政管理而非商業邏輯。
+    Traditional business analysis often relies on **Zip Codes**, but zip code shapes are highly irregular, and their boundaries are often based on administrative management rather than business logic.
     
-    我們導入了 Uber 開源的 **H3 六角形分層網格系統**（Resolution 8，每個六角形面積約 0.74 平方公里）：
-    * **等距優勢：** 六角形中心到相鄰各邊的距離相等，徹底消除傳統矩形網格的邊緣扭曲效應。
-    * **精確聚類：** 將全美數十萬家餐廳精準對應到蜂巢網格中，提供社區等級（Neighborhood-level）的微觀分析。
+    We introduced Uber's open-source **H3 Hexagonal Hierarchical Spatial Index** (Resolution 8, where each hexagon covers approximately 0.74 sq km):
+    * **Equidistant Advantage:** The distance from the center of a hexagon to adjacent edges is equal, completely eliminating the edge distortion effects of traditional rectangular grids.
+    * **Precise Clustering:** Accurately mapping hundreds of thousands of restaurants across the US into a honeycomb grid provides micro-analysis at the neighborhood level.
     """)
 
 with col2:
     st.info("""
-    **🛡️ 隱私與資料穩健性保證**
+    **🛡️ Privacy and Data Robustness Guarantee**
     
-    本平台使用之資料皆為**去識別化 (De-identified)** 的公開商業登記與區域聚合數據，完全遵守 CCPA 等相關隱私法規。
+    All data used on this platform is **De-identified** public commercial registration and regional aggregated data, fully compliant with CCPA and other relevant privacy regulations.
     
-    我們的 PySpark 後端管線每日自動化清洗、校正超過 5GB 的異常數據，確保您看到的每一個 Void Score 都精確可靠。
+    Our PySpark backend pipeline automatically cleans and calibrates over 5GB of anomalous data daily, ensuring that every Void Score you see is precise and reliable.
     """)
     
     st.markdown("""
@@ -59,4 +59,4 @@ with col2:
 st.divider()
 
 st.markdown("### Ready to find your Blue Ocean?")
-st.button("前往 Dashboard 開始分析", type="primary")
+st.button("Go to Dashboard", type="primary")

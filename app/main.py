@@ -64,9 +64,9 @@ with col1:
     ]
     valid_cuisines = df[~df["cuisine_type"].isin(blacklist)]["cuisine_type"].value_counts().head(40).index.tolist()
     cuisine_options = ["All"] + sorted(valid_cuisines)
-    selected_cuisine = st.selectbox("🍽️ 篩選料理類型", cuisine_options)
+    selected_cuisine = st.selectbox("🍽️ Filter Cuisine Type", cuisine_options)
 with col2:
-    view_mode = st.radio("👀 顯示模式", ["3D 柱狀立體 (高度=租金)", "2D 扁平色塊"], horizontal=True)
+    view_mode = st.radio("👀 View Mode", ["3D Extruded (Height=Rent)", "2D Flat Hexagons"], horizontal=True)
 
 # 依據選擇過濾資料
 if selected_cuisine != "All":
@@ -76,7 +76,7 @@ else:
 
 is_extruded = view_mode.startswith("3D")
 
-with st.spinner("🌍 正在載入並渲染全美 H3 空間網格地圖..."):
+with st.spinner("🌍 Loading and rendering nationwide H3 spatial grid map..."):
     # 動態建立 PyDeck 圖層
     h3_layer = pdk.Layer(
         "H3HexagonLayer",

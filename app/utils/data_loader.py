@@ -13,7 +13,7 @@ def load_void_scores():
     使用 st.cache_data 載入 Void Score CSV 資料，並預先計算地圖渲染所需的顏色與高度。
     """
     if not os.path.exists(CSV_PATH):
-        st.error(f"找不到資料檔案：{CSV_PATH}。請先執行後端管線 (Phase 3)。")
+        st.error(f"Data file not found: {CSV_PATH}. Please run the backend pipeline (Phase 3) first.")
         st.stop()
     
     df = pd.read_csv(CSV_PATH)

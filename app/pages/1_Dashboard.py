@@ -8,7 +8,7 @@ inject_global_style()
 inject_sidebar_footer()
 
 st.title("📊 Executive Dashboard")
-st.markdown("探索不同料理類型與區域的競爭強度，識別最佳投資標的。")
+st.markdown("Explore competitive intensity across different cuisines and regions to identify the best investment targets.")
 
 # 載入快取資料
 df = load_void_scores()
@@ -28,7 +28,7 @@ valid_cuisines = df[~df["cuisine_type"].isin(blacklist)]["cuisine_type"].value_c
 cuisine_options = ["All"] + sorted(valid_cuisines)
 selected_cuisine = st.sidebar.selectbox("🍽️ Cuisine Type", cuisine_options)
 
-min_reviews = st.sidebar.slider("最低總評論數 (需求門檻)", 0, int(df["total_reviews"].max() * 0.1), 100)
+min_reviews = st.sidebar.slider("Minimum Total Reviews (Demand Threshold)", 0, int(df["total_reviews"].max() * 0.1), 100)
 
 # 應用過濾器
 filtered_df = df[df["total_reviews"] >= min_reviews]
@@ -42,7 +42,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("🚨 Saturated Market Alert")
-    st.markdown("前 10 大最飽和料理類型 (依據競爭者總數)")
+    st.markdown("Top 10 most saturated cuisine types (based on total competitors)")
     
     # 聚合全美最飽和的料理
     sat_df = df.groupby("cuisine_type")["competitor_count"].sum().reset_index()
@@ -55,14 +55,14 @@ with col1:
         orientation='h',
         color="competitor_count",
         color_continuous_scale="Reds",
-        labels={"competitor_count": "競爭者總數", "cuisine_type": "料理類型"}
+        labels={"competitor_count": "Total Competitors", "cuisine_type": "Cuisine Type"}
     )
     fig_bar.update_layout(yaxis={'categoryorder':'total ascending'}, plot_bgcolor="rgba(0,0,0,0)")
     st.plotly_chart(fig_bar, use_container_width=True)
 
 with col2:
     st.subheader("🎯 Opportunity Matrix")
-    st.markdown("X軸: 租金成本 | Y軸: 競爭者數量 | **左下角為最佳 Sweet Spot**")
+    st.markdown("X-Axis: Rent Cost | Y-Axis: Competitor Count | **Bottom-Left is the Sweet Spot**")
     
     # 避免散佈圖點過多，取 Top 2000
     scatter_df = filtered_df.sort_values(by="void_score", ascending=False).head(2000)
@@ -75,8 +75,8 @@ with col2:
         color_continuous_scale="Viridis",
         hover_data=["dominant_zip", "cuisine_type", "total_reviews"],
         labels={
-            "rent_index": "區域租金指數 (Cost)", 
-            "competitor_count": "競爭者數量 (Supply)",
+            "rent_index": "Regional Rent Index (Cost)", 
+            "competitor_count": "Competitor Count (Supply)",
             "void_score": "Void Score"
         }
     )
@@ -95,8 +95,8 @@ with col2:
 st.divider()
 
 # --- 資料表區塊 ---
-st.subheader("🏆 Top 5 Investment Zones (最佳投資區域)")
-st.markdown("基於您在左側選擇的條件，以下是全美 Void Score 最高的 5 個黃金社區。")
+st.subheader("🏆 Top 5 Investment Zones")
+st.markdown("Based on your selected filters, these are the top 5 golden neighborhoods in the US with the highest Void Scores.")
 
 import requests
 
@@ -132,7 +132,7 @@ display_df.index = display_df.index + 1
 st.dataframe(
     display_df,
     column_config={
-        "void_score": st.column_config.NumberColumn("Void Score", format="%.1f 分"),
+        "void_score": st.column_config.NumberColumn("Void Score", format="%.1f pts"),
         "rent_index": st.column_config.NumberColumn("Rent Index", format="$%d"),
         "total_reviews": st.column_config.NumberColumn("Total Reviews", format="%d"),
         "avg_rating": st.column_config.NumberColumn("Avg Rating", format="%.1f ⭐"),
