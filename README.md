@@ -1,5 +1,6 @@
 # Project Overview: Spatial BI - Restaurant Void Analysis Platform (SaaS MVP)
 
+![Spatial BI Demo](reversed_output.gif)
 ## 1. Project Goal
 This project is a B2B Big Data monetization platform designed for cloud kitchen operators and commercial real estate developers. It performs "Void Analysis" by ingesting Yelp business data and Zillow rent data, applying spatial gridding (Uber H3), and calculating a "Void Score" (Supply vs. Cost) to identify highly profitable, under-served neighborhoods.
 
