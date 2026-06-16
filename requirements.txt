@@ -10,7 +10,7 @@ numpy>=1.24.0           # Numerical operations
 h3>=4.0.0               # Uber H3 Hexagonal Spatial Index
 
 # --- Visualization ---
-keplergl>=0.3.2         # 3D hexagon map visualization
+pydeck>=0.8.0           # 3D hexagon map visualization
 
 # --- Data Ingestion ---
 requests>=2.31.0        # HTTP downloads (Zillow ZORI)
